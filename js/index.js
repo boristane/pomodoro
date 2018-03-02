@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
         controls: document.querySelectorAll(".controls"),
         type: document.getElementById("type")
     };
-    UI.bar.width = "0";
+
+    if (Notification.permission !== "granted"){
+        Notification.requestPermission();
+    }
+
     UI.breakPlus.addEventListener("click", (e) => {
         e.preventDefault();
         if(!running){
@@ -74,21 +78,29 @@ document.addEventListener("DOMContentLoaded", () => {
                     UI.seconds.textContent = Number(UI.seconds.textContent) - 1 < 10 ? "0" + (Number(UI.seconds.textContent) - 1).toString() : Number(UI.seconds.textContent) - 1;;
                 }  
                 time--;
+                if(session){
+                    document.title = UI.minutes.textContent +":"+ UI.seconds.textContent + " To next break...";
+                }else{
+                    document.title = UI.minutes.textContent +":"+ UI.seconds.textContent + " To next session...";
+                }
                 UI.bar.style.width = ((totalTime-time)/totalTime)*100 + "%";
                 if(((totalTime-time)/totalTime)*100 >= 98){
                     UI.bar.style.borderRadius = "9px";
                 }
                 if(time <= 0){
+                    let icon = "http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png";
                     if(!session){
                         UI.minutes.textContent = UI.session.textContent < 10 ? "0"+UI.session.textContent : UI.session.textContent;
                         time = Number(UI.session.textContent)*60;
                         UI.type.textContent = "Session";
                         UI.bar.style.backgroundColor = "green";
+                        notify("my pomodoro", icon, "Starting new work session");
                     }else{
                         UI.minutes.textContent = UI.break.textContent < 10 ? "0"+UI.break.textContent : UI.break.textContent;
                         time = Number(UI.break.textContent)*60;
                         UI.type.textContent = "Break !";
                         UI.bar.style.backgroundColor = "red";
+                        notify("my pomodoro", icon, "Starting new break");
                     }
                     totalTime = time;
                     session = !session;
@@ -116,8 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
         UI.bar.style.borderRadius = "9px 0 0 9px";
         UI.bar.style.backgroundColor = "green";
         UI.type.textContent = "Session";
+        document.title = "my pomodoro";
     });
-
-    
-
 });
+
+function notify(title, icon, text){
+    if(Notification.permission !== "granted"){
+        Notification.requestPermission();
+    }else{
+        let notif = new Notification(title, {
+            icon: icon,
+            body: text,
+        });
+    }
+}
