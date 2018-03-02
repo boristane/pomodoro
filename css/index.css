@@ -1,0 +1,56 @@
+html {
+    height: 100%;
+}
+
+body{
+	margin-top: 0px;
+	background-color: #212121;
+    font-family: "Advent Pro";
+}
+
+main{
+	text-align: center;
+    margin: 10% auto auto auto;
+    background-color: white;
+    width: 40%;
+    padding: 2% 1%;
+    border-radius: 3px;
+}
+
+.loading-bar{
+    margin: 15px 5px;
+    margin-top: 0px;
+    border-radius: 10px;
+    height: 30px;
+    border: solid #212121 2px;
+}
+
+#bar{
+    width: 0%;
+    height: 26px;
+    border-radius: 9px 0 0 9px;
+    background-color: green;
+}
+
+.controls{
+    cursor: pointer;
+    color: lightgray;
+}
+
+.controls:hover{
+    color: black;
+}
+
+p{
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+span{
+    font-size: 1.8em;
+}
+
+.timer{
+    font-family: "Share Tech Mono";
+    color: #212121;
+}

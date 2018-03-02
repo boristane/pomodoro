@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link href="https://fonts.googleapis.com/css?family=Advent+Pro|Happy+Monkey|Share+Tech+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css"/>
+    <title>my pomodoro</title>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper grey darken-2">
+            <a href="#!" class="brand-logo">my pomodoro</a>
+            </div>
+        </nav>
+    </div>
+
+    <main>
+
+        <div class="loading-bar">
+            
+            <div id="bar">
+
+            </div>
+
+        </div>
+        
+        <div class="row">
+            <div class="col s12 m6">
+                <p>Break length</p>
+                <p><i class="fa fa-minus controls break-minus"></i> <span id="break">5</span> <i class="fa fa-plus controls break-plus"></i></p>
+            </div>
+            <div class="col s12 m6">
+                <p>Session length</p>
+                <p><i class="fa fa-minus controls session-minus"></i> <span id="session">1</span> <i class="fa fa-plus controls session-plus"></i></p>
+            </div>
+        </div>
+
+        <div>
+            <span id="type">Session</span>
+        </div>
+
+        <div class="timer">
+            <h1><span id="minutes">01</span>:<span id="seconds">00</span></h1>
+        </div>
+        <div class="row">
+            <div class="col s12 m6" style="text-align: right;">
+                <button class="waves-effect waves-light btn grey darken-2" id="play"><i class="fa fa-play"></i></button>
+            </div>
+            <div class="col s12 m6" style="text-align: left;">
+                <button class="waves-effect waves-light btn grey darken-2" id="stop"><i class="fa fa-stop"></i></button>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
